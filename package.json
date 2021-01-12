@@ -15,7 +15,8 @@
     "check:typescript": "tsc --noEmit --skipLibCheck --project .",
     "lint": " eslint --ext ts,tsx .",
     "lint:fix": "eslint --ext ts,tsx . --fix",
-    "clean": "rm -rf lib/*.js ; rm -rf lib/*.d.ts ; rm -rf lib/**/*.js ; rm -rf lib/**/*.d.ts"
+    "clean": "rm -rf lib/*.js ; rm -rf lib/*.d.ts ; rm -rf lib/**/*.js ; rm -rf lib/**/*.d.ts",
+    "clean:ci": "rm -rf ./node_modules/next ; rm -rf ./node_modules/react ; rm -rf ./node_modules/react-dom"
   },
   "peerDependencies": {
     "next": "^10.0.5",
