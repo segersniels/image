@@ -50,5 +50,9 @@
   "bugs": {
     "url": "https://github.com/segersniels/image/issues"
   },
-  "homepage": "https://github.com/segersniels/image#readme"
+  "homepage": "https://github.com/segersniels/image#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }
