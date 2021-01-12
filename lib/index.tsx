@@ -11,10 +11,10 @@ const ResponsiveImage = (
   props: ImageProps & { layout?: 'fixed' | 'intrinsic' | 'responsive' },
 ) => {
   const { src, layout = 'intrinsic' } = props;
-  const ref = useRef<Ref>(null);
+  const ref = useRef<Ref | null>(null);
 
   useEffect(() => {
-    if (ref.current.loaded) {
+    if (ref.current?.loaded) {
       return;
     }
 
@@ -27,7 +27,7 @@ const ResponsiveImage = (
     };
   }, [src]);
 
-  if (!ref.current.loaded) {
+  if (!ref.current?.loaded) {
     return null;
   }
 
