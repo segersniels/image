@@ -9,6 +9,7 @@
     "lib/**/*.d.ts"
   ],
   "scripts": {
+    "postinstall": "yarn add --peer --ignore-scripts next react react-dom",
     "compile": "tsc",
     "compile:watch": "tsc --watch",
     "check:typescript": "tsc --noEmit --skipLibCheck --project .",
@@ -16,10 +17,10 @@
     "lint:fix": "eslint --ext ts,tsx . --fix",
     "clean": "rm -rf lib/*.js ; rm -rf lib/*.d.ts ; rm -rf lib/**/*.js ; rm -rf lib/**/*.d.ts"
   },
-  "dependencies": {
+  "peerDependencies": {
     "next": "^10.0.5",
-    "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@types/react": "^16.9.48",
