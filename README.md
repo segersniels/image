@@ -2,6 +2,9 @@
 
 A dynamic and responsive default implementation of `next/image` that determines height and width on the go.
 
+<p align="center">
+<img src="./resources/image.png" width="300">
+
 ### Why
 
 Next.js released `next/image` quite a while ago but wasn't checking all the boxes that I was searching in their automagic `<Image />` component.
