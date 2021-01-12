@@ -1,5 +1,5 @@
 import NextImage, { ImageLoader } from 'next/image';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 
 declare const VALID_LOADING_VALUES: readonly ['lazy', 'eager', undefined];
 declare type LoadingValue = typeof VALID_LOADING_VALUES[number];
@@ -24,44 +24,31 @@ type Props = Omit<
   height?: number;
 };
 
-interface Ref {
-  width?: number;
-  height?: number;
-  loaded?: boolean;
-}
-
 const ResponsiveImage = (props: Props) => {
   const { src, layout = 'intrinsic' } = props;
-  const ref = useRef<Ref | null>(null);
+  const [height, setHeight] = useState(0);
+  const [width, setWidth] = useState(0);
+  const [isInitialised, setIsInitialised] = useState(false);
 
   useEffect(() => {
-    if (ref.current?.loaded) {
+    if (isInitialised) {
       return;
     }
 
     const img = new Image();
     img.src = src;
     img.onload = () => {
-      ref.current = {
-        width: img.naturalWidth,
-        height: img.naturalHeight,
-        loaded: true,
-      };
+      setHeight(img.naturalHeight);
+      setWidth(img.naturalWidth);
+      setIsInitialised(true);
     };
-  }, [src]);
+  }, [src, isInitialised]);
 
-  if (!ref.current?.loaded) {
+  if (!isInitialised) {
     return null;
   }
 
-  return (
-    <NextImage
-      {...props}
-      layout={layout}
-      width={ref.current.width}
-      height={ref.current.height}
-    />
-  );
+  return <NextImage {...props} layout={layout} width={width} height={height} />;
 };
 
 export default ResponsiveImage;
