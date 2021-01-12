@@ -9,14 +9,12 @@
     "lib/**/*.d.ts"
   ],
   "scripts": {
-    "postinstall": "yarn add --peer --ignore-scripts next react react-dom",
     "compile": "tsc",
     "compile:watch": "tsc --watch",
     "check:typescript": "tsc --noEmit --skipLibCheck --project .",
     "lint": " eslint --ext ts,tsx .",
     "lint:fix": "eslint --ext ts,tsx . --fix",
-    "clean": "rm -rf lib/*.js ; rm -rf lib/*.d.ts ; rm -rf lib/**/*.js ; rm -rf lib/**/*.d.ts",
-    "clean:ci": "rm -rf ./node_modules/next ; rm -rf ./node_modules/react ; rm -rf ./node_modules/react-dom"
+    "clean": "rm -rf lib/*.js ; rm -rf lib/*.d.ts ; rm -rf lib/**/*.js ; rm -rf lib/**/*.d.ts"
   },
   "peerDependencies": {
     "next": "^10.0.5",
@@ -33,7 +31,10 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^3.0.0",
     "eslint-plugin-simple-import-sort": "^5.0.3",
+    "next": "^10.0.5",
     "prettier": "^2.0.4",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "typescript": "^3.8.3"
   },
   "repository": {

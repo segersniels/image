@@ -44,7 +44,6 @@ jobs:
           restore-keys: ${{ runner.os }}-yarn-
       - run: yarn install
       - run: yarn compile
-      - run: yarn clean:ci
       - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
       - name: Publish
         run: |
