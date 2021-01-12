@@ -1,5 +1,28 @@
-import NextImage, { ImageProps } from 'next/image';
+import NextImage, { ImageLoader } from 'next/image';
 import React, { useEffect, useRef } from 'react';
+
+declare const VALID_LOADING_VALUES: readonly ['lazy', 'eager', undefined];
+declare type LoadingValue = typeof VALID_LOADING_VALUES[number];
+declare type ImgElementStyle = NonNullable<
+  JSX.IntrinsicElements['img']['style']
+>;
+
+type Props = Omit<
+  JSX.IntrinsicElements['img'],
+  'src' | 'srcSet' | 'ref' | 'width' | 'height' | 'loading' | 'style'
+> & {
+  src: string;
+  loader?: ImageLoader;
+  quality?: number | string;
+  priority?: boolean;
+  loading?: LoadingValue;
+  unoptimized?: boolean;
+  objectFit?: ImgElementStyle['objectFit'];
+  objectPosition?: ImgElementStyle['objectPosition'];
+  layout?: 'fixed' | 'intrinsic' | 'responsive';
+  width?: number;
+  height?: number;
+};
 
 interface Ref {
   width: number;
@@ -7,9 +30,7 @@ interface Ref {
   loaded: boolean;
 }
 
-const ResponsiveImage = (
-  props: ImageProps & { layout?: 'fixed' | 'intrinsic' | 'responsive' },
-) => {
+const ResponsiveImage = (props: Props) => {
   const { src, layout = 'intrinsic' } = props;
   const ref = useRef<Ref | null>(null);
 
