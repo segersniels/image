@@ -1,6 +1,6 @@
 {
   "name": "@segersniels/image",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0",
   "description": "A dynamic and responsive default implementation of `next/image` that determines height and width on the go.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -23,7 +23,6 @@
   },
   "devDependencies": {
     "@types/react": "^16.9.48",
-    "@types/react-syntax-highlighter": "^11.0.4",
     "@typescript-eslint/eslint-plugin": "^2.28.0",
     "@typescript-eslint/parser": "^2.28.0",
     "eslint": "^6.8.0",
@@ -37,23 +36,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/segersniels/window.git"
+    "url": "git+https://github.com/segersniels/image.git"
   },
   "keywords": [
     "react",
-    "markdown",
-    "osx",
-    "terminal",
-    "window",
-    "ui",
-    "code",
-    "syntax",
-    "highlighting"
+    "next",
+    "nextjs",
+    "image",
+    "responsive"
   ],
   "author": "Niels Segers",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/segersniels/window/issues"
+    "url": "https://github.com/segersniels/image/issues"
   },
-  "homepage": "https://github.com/segersniels/window#readme"
+  "homepage": "https://github.com/segersniels/image#readme"
 }
