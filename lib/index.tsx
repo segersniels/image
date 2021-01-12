@@ -24,15 +24,9 @@ type Props = Omit<
   height?: number;
 };
 
-interface Ref {
-  width: number;
-  height: number;
-  loaded: boolean;
-}
-
 const ResponsiveImage = (props: Props) => {
   const { src, layout = 'intrinsic' } = props;
-  const ref = useRef<Ref | null>(null);
+  const ref = useRef(null);
 
   useEffect(() => {
     if (ref.current?.loaded) {
