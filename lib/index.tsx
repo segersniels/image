@@ -24,9 +24,15 @@ type Props = Omit<
   height?: number;
 };
 
+interface Ref {
+  width?: number;
+  height?: number;
+  loaded?: boolean;
+}
+
 const ResponsiveImage = (props: Props) => {
   const { src, layout = 'intrinsic' } = props;
-  const ref = useRef(null);
+  const ref = useRef<Ref | null>(null);
 
   useEffect(() => {
     if (ref.current?.loaded) {
@@ -36,9 +42,11 @@ const ResponsiveImage = (props: Props) => {
     const img = new Image();
     img.src = src;
     img.onload = () => {
-      ref.current.width = img.naturalWidth;
-      ref.current.height = img.naturalHeight;
-      ref.current.loaded = true;
+      ref.current = {
+        width: img.naturalWidth,
+        height: img.naturalHeight,
+        loaded: true,
+      };
     };
   }, [src]);
 
