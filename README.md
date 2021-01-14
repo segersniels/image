@@ -19,11 +19,11 @@ So the TLDR; is it does a lot of internal image optimization for you so you don'
 
 This is perfectly fine if you're using local images that you know the dimensions of. But things quickly become annoying when you try including images from external sources like eg. Twitter. Neither of the current implementations was doing the _magic_ I was promised and still required weird logic to make things work.
 
-This wrapped implementation will determine the `height` and `width` for you on image load so you don't have to worry about any of this anymore. The default `layout` is set to `intrinsic` which will scale down for smaller viewports but won't scale up.
+This wrapped implementation will determine the `height` and `width` for you on image load so you don't have to worry about any of this anymore. The default `layout` is set to `responsive.
 
 ## Usage
 
-Use it like you would use `next/image`. The default `layout` is `intrinsic` but can be changed to `responsive` if your use case requires it. View below example using it as a renderer provided to [`react-markdown`](https://github.com/remarkjs/react-markdown).
+Use it like you would use `next/image`. The default `layout` is `responsive` but can be changed to `intrinsic` if your use case requires it. View below example using it as a renderer provided to [`react-markdown`](https://github.com/remarkjs/react-markdown).
 
 ```js
 export default {
