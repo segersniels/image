@@ -8,7 +8,7 @@ import { Props } from '..';
  * we need to create a HTMLImageElement component to mimic the onLoad event and grab the correct height and width
  */
 const IntrinsicImage = (props: Props) => {
-  const { src, layout = 'intrinsic' } = props;
+  const { src } = props;
   const [height, setHeight] = useState(0);
   const [width, setWidth] = useState(0);
   const [isInitialised, setIsInitialised] = useState(false);
@@ -31,7 +31,9 @@ const IntrinsicImage = (props: Props) => {
     return null;
   }
 
-  return <NextImage {...props} layout={layout} width={width} height={height} />;
+  return (
+    <NextImage {...props} layout="intrinsic" width={width} height={height} />
+  );
 };
 
 export default IntrinsicImage;
