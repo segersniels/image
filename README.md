@@ -1,5 +1,7 @@
 # @segersniels/image
 
+[![Actions](https://action-badges.now.sh/segersniels/image)](https://github.com/segersniels/image/actions)[![npm](https://img.shields.io/npm/dm/@segersniels/image.svg)](https://www.npmjs.com/package/@segersniels/image)
+
 A dynamic and responsive default implementation of `next/image` that determines height and width on the go.
 
 <p align="center">
