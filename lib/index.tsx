@@ -1,5 +1,8 @@
-import NextImage, { ImageLoader } from 'next/image';
-import React, { useEffect, useState } from 'react';
+import { ImageLoader } from 'next/image';
+import React from 'react';
+
+import IntrinsicImage from './Intrinsic';
+import ResponsiveImage from './Responsive';
 
 declare const VALID_LOADING_VALUES: readonly ['lazy', 'eager', undefined];
 declare type LoadingValue = typeof VALID_LOADING_VALUES[number];
@@ -7,7 +10,13 @@ declare type ImgElementStyle = NonNullable<
   JSX.IntrinsicElements['img']['style']
 >;
 
-type Props = Omit<
+enum Layout {
+  Intrinsic = 'intrinsic',
+  Fixed = 'fixed',
+  Responsive = 'responsive',
+}
+
+export type Props = Omit<
   JSX.IntrinsicElements['img'],
   'src' | 'srcSet' | 'ref' | 'width' | 'height' | 'loading' | 'style'
 > & {
@@ -19,36 +28,19 @@ type Props = Omit<
   unoptimized?: boolean;
   objectFit?: ImgElementStyle['objectFit'];
   objectPosition?: ImgElementStyle['objectPosition'];
-  layout?: 'fixed' | 'intrinsic' | 'responsive';
+  layout?: Layout;
   width?: number;
   height?: number;
 };
 
-const ResponsiveImage = (props: Props) => {
-  const { src, layout = 'intrinsic' } = props;
-  const [height, setHeight] = useState(0);
-  const [width, setWidth] = useState(0);
-  const [isInitialised, setIsInitialised] = useState(false);
+const Image = (props: Props) => {
+  const { layout = 'responsive' } = props;
 
-  useEffect(() => {
-    if (isInitialised) {
-      return;
-    }
-
-    const img = new Image();
-    img.src = src;
-    img.onload = () => {
-      setHeight(img.naturalHeight);
-      setWidth(img.naturalWidth);
-      setIsInitialised(true);
-    };
-  }, [src, isInitialised]);
-
-  if (!isInitialised) {
-    return null;
-  }
-
-  return <NextImage {...props} layout={layout} width={width} height={height} />;
+  return layout === Layout.Intrinsic ? (
+    <IntrinsicImage {...props} />
+  ) : (
+    <ResponsiveImage {...props} />
+  );
 };
 
-export default ResponsiveImage;
+export default Image;
