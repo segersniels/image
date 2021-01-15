@@ -1,7 +1,7 @@
 import NextImage from 'next/image';
 import React, { useEffect, useState } from 'react';
 
-import { Props } from '..';
+import { Layout, Props } from '..';
 
 /**
  * When layout is set to 'intrinsic' and due to the onLoad event target having incorrect dimensions
@@ -32,7 +32,12 @@ const IntrinsicImage = (props: Props) => {
   }
 
   return (
-    <NextImage {...props} layout="intrinsic" width={width} height={height} />
+    <NextImage
+      {...props}
+      layout={Layout.Intrinsic}
+      width={width}
+      height={height}
+    />
   );
 };
 

@@ -1,4 +1,4 @@
-import { ImageLoader } from 'next/image';
+import NextImage, { ImageLoader } from 'next/image';
 import React from 'react';
 
 import IntrinsicImage from './Intrinsic';
@@ -10,7 +10,7 @@ declare type ImgElementStyle = NonNullable<
   JSX.IntrinsicElements['img']['style']
 >;
 
-enum Layout {
+export enum Layout {
   Intrinsic = 'intrinsic',
   Fixed = 'fixed',
   Responsive = 'responsive',
@@ -34,9 +34,19 @@ export type Props = Omit<
 };
 
 const Image = (props: Props) => {
-  const { layout = 'responsive' } = props;
+  // Fallback to default next/image if user passes width and height
+  if (props.width && props.height) {
+    return (
+      <NextImage
+        {...props}
+        layout={props.layout ?? Layout.Intrinsic} // Respect default value `intrinsic`
+        width={props.width}
+        height={props.height}
+      />
+    );
+  }
 
-  return layout === Layout.Intrinsic ? (
+  return props.layout === Layout.Intrinsic ? (
     <IntrinsicImage {...props} />
   ) : (
     <ResponsiveImage {...props} />

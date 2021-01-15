@@ -1,14 +1,14 @@
 import NextImage from 'next/image';
 import React, { SyntheticEvent, useState } from 'react';
 
-import { Props } from '..';
+import { Layout, Props } from '..';
 
 /**
  * In a normal situation we can make use of 'responsive' as our layout as can scale the small dimensions of
  * the event target up without noticeable quality loss
  */
 const ResponsiveImage = (props: Props) => {
-  const { layout = 'responsive' } = props;
+  const { layout = Layout.Responsive } = props;
   const [height, setHeight] = useState(0);
   const [width, setWidth] = useState(0);
 
