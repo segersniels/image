@@ -1,6 +1,6 @@
 {
   "name": "@segersniels/image",
-  "version": "1.2.0",
+  "version": "1.2.1-beta.0",
   "description": "A dynamic and responsive default implementation of `next/image` that determines height and width on the go.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
