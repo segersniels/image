@@ -34,19 +34,25 @@ export type Props = Omit<
 };
 
 const Image = (props: Props) => {
-  // Fallback to default next/image if user passes width and height
-  if (props.width && props.height) {
+  // Respect default value `intrinsic`
+  const { layout = Layout.Intrinsic } = props;
+
+  // Fallback to default next/image
+  if (
+    (props.width && props.height) ||
+    ![Layout.Intrinsic, Layout.Responsive].includes(props.layout)
+  ) {
     return (
       <NextImage
         {...props}
-        layout={props.layout ?? Layout.Intrinsic} // Respect default value `intrinsic`
+        layout={layout}
         width={props.width}
         height={props.height}
       />
     );
   }
 
-  return props.layout === Layout.Intrinsic ? (
+  return layout === Layout.Intrinsic ? (
     <IntrinsicImage {...props} />
   ) : (
     <ResponsiveImage {...props} />
