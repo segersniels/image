@@ -18,7 +18,7 @@
     "prepare": "install-peers"
   },
   "peerDependencies": {
-    "next": "^10.0.5",
+    "next": "^10.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
@@ -33,7 +33,6 @@
     "eslint-plugin-react-hooks": "^3.0.0",
     "eslint-plugin-simple-import-sort": "^5.0.3",
     "install-peers-cli": "^2.2.0",
-    "next": "^10.0.5",
     "prettier": "^2.0.4",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
