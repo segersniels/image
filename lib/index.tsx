@@ -40,7 +40,7 @@ const Image = (props: Props) => {
   // Fallback to default next/image
   if (
     (props.width && props.height) ||
-    ![Layout.Intrinsic, Layout.Responsive].includes(props.layout)
+    ![Layout.Intrinsic, Layout.Responsive].includes(layout)
   ) {
     return (
       <NextImage
